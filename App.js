@@ -32,7 +32,7 @@ export default class App extends Component {
           }
         }}>
 
-          <Stack.Screen options={{headerStyle: {backgroundColor:'#455a',alignContent:'center',},headerTintColor:'#125487',headerTitleStyle:{
+          <Stack.Screen options={{headerStyle: {backgroundColor:'#455a'},headerTintColor:'#125487',headerTitleStyle:{
             fontWeight:'bold'
           } ,title:"bienvenu"}} name="Login" component={Login} />
 

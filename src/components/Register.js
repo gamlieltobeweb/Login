@@ -3,6 +3,9 @@ import { Text, StyleSheet, View, TextInput, TouchableOpacity, Button } from 'rea
 import { createStackNavigator } from 'react-navigation-stack'
 import { useNavigation } from '@react-navigation/native';
 
+
+
+
 import axios from 'axios'
 
 let retour;
@@ -17,6 +20,7 @@ class Register extends Component {
             userPassword: ''
         }
     }
+    
     main = async () => {
         let a = await this.userRegister()
         console.log("aaaaaaaa", a)
@@ -153,7 +157,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         justifyContent: 'center',
-        alignContent: 'center'
+        // alignContent: 'center'
     },
     inputBox: {
         width: 300,

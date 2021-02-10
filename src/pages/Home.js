@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
+import * as Speech from 'expo-speech';
+
+let nameVoice;
 
 export default class Home extends Component {
     constructor(props) {
@@ -10,10 +13,35 @@ export default class Home extends Component {
         }
     }
 
+    myname =()=>{
+        let name = this.props.route.params.name
+        return nameVoice = name.replace('succesly entry', "")
+      
+    }
+
+    componentDidMount() {
+
+        let bonjour = "Bienvenu a "
+
+        let name = this.props.route.params.name
+        let nameVoice = name.replace('succesly entry', "")
+
+        let bjr = bonjour.concat(nameVoice)
+
+        console.log("nameVoice", nameVoice);
+        console.log("bjr", bjr);
+
+        
+            Speech.speak(bjr,{
+                language:'fr'
+            });
+        
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Text> Bienvenu  </Text>
+                <Text> Bienvenu a {this.myname()}  </Text>
             </View>
         )
     }
@@ -26,7 +54,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize:50,
+        fontSize: 50,
         fontWeight: "bold"
     },
 

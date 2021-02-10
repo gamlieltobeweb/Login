@@ -4,13 +4,13 @@ import axios from 'axios';
 
 export default class LogInForm extends Component {
     constructor(props) {
-		super(props)
-    this.state = {
-        userEmail: '',
-        userPassword: '',
-        redirect:false
+        super(props)
+        this.state = {
+            userEmail: '',
+            userPassword: '',
+            redirect: false
+        }
     }
-}
 
     userLogin = async (e) => {
 
@@ -29,40 +29,37 @@ export default class LogInForm extends Component {
 
 
 
-                let Data = {
+                let data = {
 
                     email: userEmail,
                     pass: userPassword,
                 }
-      
+
                 console.log(Data)
-              await  fetch('http://localhost/api/login.php', {
+                await axios.post('http://10.0.0.9/api/login.php', {
 
-                	mode: 'cors',
-                	method: 'POST',
-                	// header: {
-                	// 	'Accept': 'application/json',
-                	// 	'Content-type': 'application/json',
-                	// 	'Access-Control-Allow-Origin': '*'
+                    // mode: 'cors',
+                    // method: 'POST',
+                    header: {
+                        'Accept': 'application/json',
+                        'Content-type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
 
-                	// },
+                    },
 
-
-                	body: JSON.stringify(Data)
-                	// body: Data
+                    Data: data
                 })
-                .then((response) => {
-                let resp  = response;
-                console.log(resp)
-                // .then((responseJson) => {
-                // 	console.log(responseJson)
-                // })
-                })
-                .catch((error) => {
-                    // console.error(error.message);
-                    console.warn(error)
-                    // alert("error")
-                });
+                    .then((response) => {
+                        console.log("response",response)
+                        // .then((responseJson) => {
+                        // 	console.log(responseJson)
+                        // })
+                    })
+                    .catch((error) => {
+                        // console.error(error.message);
+                        console.warn(error)
+                        // alert("error")
+                    });
 
 
 
@@ -113,7 +110,7 @@ export default class LogInForm extends Component {
                 />
 
                 <TouchableOpacity
-                
+
                     style={styles.buttonContainer}
                     onPress={this.userLogin}
                 >

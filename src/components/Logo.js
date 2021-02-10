@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         justifyContent: 'flex-end',
-        alignContent: 'center'
+        // alignContent: 'center'
     },
     logoText: {
         marginVertical: 15,

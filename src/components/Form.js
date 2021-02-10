@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios'
 
 let retour;
+let name;
 
 class Form extends Component {
     constructor(props) {
@@ -25,14 +26,17 @@ class Form extends Component {
             await this.navigateDetails()
         }
         else {
-            // alert("pas inscris ou ereur de connection")
+            alert("pas inscris ou ereur de connection")
         }
     }
 
     navigateDetails = () => {
 
         console.log("this.props", this.props);
-        this.props.navigation.navigate('Home');
+        
+        this.props.navigation.navigate('Home',{
+            name:name
+        });
     };
 
     navigateForgot = () => {
@@ -61,19 +65,20 @@ class Form extends Component {
 
                     // mode: 'cors',
                     // method: 'POST',
-                    header: {
-                        'Accept': 'application/json',
-                        'Content-type': 'application/json',
-                        'Access-Control-Allow-Origin': '*',
+                    // header: {
+                    //     'Accept': 'application/json',
+                    //     'Content-type': 'application/json',
+                    //     'Access-Control-Allow-Origin': '*',
                         // 'Access-Control-Allow-Headers':'*'
 
-                    },
+                    // },
 
 
                     data: Data
                 })
-                    .then(response => {
-                        if (response.data === "succesly entry") {
+                    .then(response => {console.log("loginresponce",response.data)
+                    name = response.data
+                        if (response.data.includes("succesly entry")) {
                             return retour = "succses"
                         } else {
                             return retour = "error"
@@ -149,7 +154,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         justifyContent: 'center',
-        alignContent: 'center'
+        alignItems: 'center'
     },
     inputBox: {
         width: 300,
